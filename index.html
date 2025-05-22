@@ -165,6 +165,7 @@
         .link-item {
             transition: all 0.3s;
             border-left: 3px solid #ffc0cb;
+            word-break: break-all;
         }
         .link-item:hover {
             transform: translateX(5px);
@@ -213,17 +214,7 @@
             <div id="week-days" class="grid grid-cols-7 gap-2 mb-6">
                 <!-- Days will be populated by JavaScript -->
             </div>
-
-            <div class="mb-6">
-                <h3 class="font-semibold mb-3 text-[#080a00] flex items-center">
-                    <i class="fas fa-clock mr-2 text-[#5ffc3f]"></i> Today's Schedule
-                </h3>
-                <div id="today-schedule" class="space-y-3">
-                    <!-- Schedule items will be added here -->
-                </div>
-            </div>
-
-            <div class="bg-white p-4 rounded-xl shadow-lg border border-[#ffc0cb]">
+            <div class="bg-white p-4 rounded-xl shadow-lg border border-[#ffc0cb] mb-6">
                 <h3 class="font-semibold mb-3 text-[#080a00] flex items-center">
                     <i class="fas fa-plus-circle mr-2 text-[#5ffc3f]"></i> Add New Schedule
                 </h3>
@@ -235,6 +226,15 @@
                     </button>
                 </div>
             </div>
+
+            <div class="mb-6">
+                <h3 class="font-semibold mb-3 text-[#080a00] flex items-center">
+                    <i class="fas fa-clock mr-2 text-[#5ffc3f]"></i> Today's Schedule
+                </h3>
+                <div id="today-schedule" class="space-y-3">
+                    <!-- Schedule items will be added here -->
+                </div>
+            </div>
         </div>
 
         <!-- To-Do List (Tab 2) -->
@@ -242,16 +242,16 @@
             <h2 class="text-xl font-bold mb-4 text-[#080a00] flex items-center">
                 <i class="fas fa-list-check mr-2 text-[#ffc0cb]"></i> Today's To-Do List
             </h2>
-            <div id="todo-list" class="space-y-3 mb-6">
-                <!-- To-do items will be added here -->
-            </div>
-
             <div class="flex items-center space-x-2 bg-white p-4 rounded-xl shadow-lg border border-[#5ffc3f]">
                 <input id="new-todo" type="text" placeholder="Add a new task..." class="border-2 border-[#5ffc3f] rounded-lg p-2 flex-1 focus:outline-none focus:ring-2 focus:ring-[#ffc0cb]">
                 <button id="add-todo" class="btn-pink px-4 py-2 rounded-full text-lg">
                     <i class="fas fa-plus"></i>
                 </button>
             </div>
+            <div id="todo-list" class="space-y-3 mb-6 mt-6">
+                <!-- To-do items will be added here -->
+            </div>
+
         </div>
 
         <!-- Web Link (Tab 3) -->
@@ -259,20 +259,7 @@
             <h2 class="text-xl font-bold mb-4 text-[#080a00] flex items-center">
                 <i class="fas fa-link mr-2 text-[#5ffc3f]"></i> Saved Links
             </h2>
-            <div class="bg-white p-4 rounded-xl shadow-lg border border-[#ffc0cb] mb-6">
-                <div class="flex items-center space-x-2 mb-4">
-                    <input id="web-link" type="url" placeholder="https://example.com" class="border-2 border-[#5ffc3f] rounded-lg p-2 flex-1 focus:outline-none focus:ring-2 focus:ring-[#ffc0cb]">
-                    <input id="web-link-name" type="text" placeholder="Link name" class="border-2 border-[#ffc0cb] rounded-lg p-2 w-32 focus:outline-none focus:ring-2 focus:ring-[#5ffc3f]">
-                    <button id="save-link" class="btn-primary px-4 py-2 rounded-lg">
-                        Save
-                    </button>
-                </div>
-                <div id="saved-links" class="space-y-2">
-                    <!-- Saved links will be added here -->
-                </div>
-            </div>
-
-            <div class="bg-white p-4 rounded-xl shadow-lg border border-[#5ffc3f]">
+            <div class="bg-white p-4 rounded-xl shadow-lg border border-[#5ffc3f] mb-6">
                 <h3 class="font-semibold mb-3 text-[#080a00] flex items-center">
                     <i class="fas fa-star mr-2 text-[#ffc0cb]"></i> Quick Links
                 </h3>
@@ -283,12 +270,24 @@
                     <button class="quick-link-btn" data-link="https://youtube.com" data-name="YouTube">
                         <i class="fab fa-youtube mr-2"></i> YouTube
                     </button>
-                    <button class="quick-link-btn" data-link="https://netflix.com" data-name="Netflix">
-                        <i class="fas fa-film mr-2"></i> Netflix
+                    <button class="quick-link-btn" data-link="https://bars.mpei.ru/bars_web/" data-name="Bars">
+                        <i class="fas fa-film mr-2"></i> Bars
                     </button>
                     <button class="quick-link-btn" data-link="https://spotify.com" data-name="Spotify">
                         <i class="fab fa-spotify mr-2"></i> Spotify
                     </button>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded-xl shadow-lg border border-[#ffc0cb] mb-6">
+                <div class="flex flex-wrap items-center space-x-2 mb-4">
+                    <input id="web-link" type="url" placeholder="https://example.com" class="border-2 border-[#5ffc3f] rounded-lg p-2 flex-1 focus:outline-none focus:ring-2 focus:ring-[#ffc0cb]">
+                    <input id="web-link-name" type="text" placeholder="Link name" class="border-2 border-[#ffc0cb] rounded-lg p-2 w-32 focus:outline-none focus:ring-2 focus:ring-[#5ffc3f]">
+                    <button id="save-link" class="btn-primary px-4 py-2 rounded-lg flex-none mt-2">
+                        Save
+                    </button>
+                </div>
+                <div id="saved-links" class="space-y-2">
+                    <!-- Saved links will be added here -->
                 </div>
             </div>
         </div>
@@ -430,35 +429,6 @@
 
                     <div id="dice-result" class="mt-4 p-4 bg-[#f0f0f0] rounded-lg text-center text-xl hidden">
                         <p id="dice-message" class="font-bold"></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white p-4 rounded-xl shadow-lg border border-[#ffc0cb]">
-                <h3 class="font-semibold mb-3 text-[#080a00] flex items-center">
-                    <i class="fas fa-trophy mr-2 text-[#5ffc3f]"></i> Leaderboard
-                </h3>
-                <div id="leaderboard" class="space-y-2">
-                    <div class="flex justify-between items-center p-2 bg-[#f0f0f0] rounded-lg">
-                        <div class="flex items-center">
-                            <span class="font-bold text-[#5ffc3f] mr-2">1.</span>
-                            <span>You</span>
-                        </div>
-                        <span class="font-bold" id="user-score">100</span>
-                    </div>
-                    <div class="flex justify-between items-center p-2">
-                        <div class="flex items-center">
-                            <span class="font-bold text-[#ffc0cb] mr-2">2.</span>
-                            <span>Alex</span>
-                        </div>
-                        <span class="font-bold">850</span>
-                    </div>
-                    <div class="flex justify-between items-center p-2">
-                        <div class="flex items-center">
-                            <span class="font-bold text-[#ffc0cb] mr-2">3.</span>
-                            <span>Sam</span>
-                        </div>
-                        <span class="font-bold">720</span>
                     </div>
                 </div>
             </div>
